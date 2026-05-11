@@ -15,6 +15,7 @@
         "laravel/tinker": "^3.0",
         "livewire/livewire": "^4.3",
         "masmerise/livewire-toaster": "^2.10",
+        "spatie/laravel-permission": "^7.4",
         "technikermathe/blade-lucide-icons": "^3.150"
     },
     "require-dev": {
