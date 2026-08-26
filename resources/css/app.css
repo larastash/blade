@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@import '@vendor/livewire/flux/dist/flux.css';
+
+@plugin "@tailwindcss/typography";
+
+@config "../../tailwind.config.js";
+
+@import "@css/theme.css";
+@import "@css/utilities.css";
+@import "@css/components.css";
+@import "@css/overrides.css";
+@import "@css/base.css";
+@import "tw-animate-css";

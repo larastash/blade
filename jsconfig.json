@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "paths": {
+            "@js/*": ["./resources/js/*"],
+            "@css/*": ["./resources/css/*"],
+            "vendor/*": ["./vendor/*"]
+        },
+        "jsx": "preserve",
+        "allowImportingTsExtensions": true,
+        "moduleResolution": "bundler",
+        "resolveJsonModule": true
+    },
+    "include": [
+        "resources/js/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "vendor",
+        "public"
+    ]
+}
