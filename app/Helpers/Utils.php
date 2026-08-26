@@ -8,7 +8,7 @@ if (! function_exists('user')) {
     /**
      * Get the currently authenticated user from the specified guard.
      *
-     * @param string|null $guard The authentication guard name (optional)
+     * @param  string|null  $guard  The authentication guard name (optional)
      * @return User|Authenticatable|null The authenticated user instance or null if not authenticated
      */
     function user(?string $guard = null): User|Authenticatable|null
@@ -33,9 +33,9 @@ if (! function_exists('plural')) {
      * - Form 1: genitive singular (2-4, 22-24... but not 12-14)
      * - Form 2: genitive plural (0, 5-20, 25-30...)
      *
-     * @param int|float $n The number to determine plural form
-     * @param array<int, string> $forms Array of word forms [nominative_singular, genitive_singular, genitive_plural]
-     * @param bool $includeNumber Whether to prepend the number to the result
+     * @param  int|float  $n  The number to determine plural form
+     * @param  array<int, string>  $forms  Array of word forms [nominative_singular, genitive_singular, genitive_plural]
+     * @param  bool  $includeNumber  Whether to prepend the number to the result
      * @return string The formatted string with correct plural form
      *
      * @example plural(1, ['яблоко', 'яблока', 'яблок']) // "1 яблоко"
@@ -68,6 +68,6 @@ if (! function_exists('plural')) {
             }
         }
 
-        return $includeNumber ? $n . ' ' . $word : $word;
+        return $includeNumber ? $n.' '.$word : $word;
     }
 }
