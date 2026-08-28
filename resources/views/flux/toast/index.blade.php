@@ -7,7 +7,7 @@
 <ui-toast x-data x-on:toast-show.document="! $el.closest('ui-toast-group') && $el.showToast($event.detail)" popover="manual" position="{{ $position }}" wire:ignore>
     <template>
         <div {{ $attributes->only(['class'])->class('max-w-sm in-[ui-toast-group]:max-w-auto in-[ui-toast-group]:w-xs sm:in-[ui-toast-group]:w-sm') }} data-variant="" data-flux-toast-dialog>
-            <div class="p-2 flex rounded-brand shadow-lg bg-gray-100 dark:bg-300 border border-color-300 dark:border-color-400">
+            <div class="p-3 flex rounded-brand bg-gray-100 dark:bg-300 border border-color-300 dark:border-color-400">
                 <div class="flex-1 flex items-start gap-3 overflow-hidden">
                     <div class="flex-1 py-1 ps-1 flex gap-3">
                         {{-- Success icon --}}
@@ -32,10 +32,10 @@
 
                         <div class="pt-1">
                             {{-- Heading --}}
-                            <div class="font-medium text-sm text-100 [&:not(:empty)+div]:font-normal [&:not(:empty)+div]:text-500 not-empty:pb-0.5"><slot name="heading"></slot></div>
+                            <div class="font-medium text-sm text-100 [&:not(:empty)+div]:font-normal not-empty:pb-1"><slot name="heading"></slot></div>
 
                             {{-- Text --}}
-                            <div class="font-medium text-sm text-100"><slot name="text"></slot></div>
+                            <div class="font-medium text-sm text-500"><slot name="text"></slot></div>
 
                             {{-- Link --}}
                             <template name="link">
