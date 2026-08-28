@@ -1,13 +1,29 @@
 <div>
+    <div class="absolute top-4 left-4">
+        <div class="flex items-center gap-2">
+            <div class="shrink-0 size-5 rounded border border-black/10 hover:scale-125 duration-150 bg-primary-50"></div>
+            <div class="shrink-0 size-5 rounded border border-black/10 hover:scale-125 duration-150 bg-primary-100"></div>
+            <div class="shrink-0 size-5 rounded border border-black/10 hover:scale-125 duration-150 bg-primary-200"></div>
+            <div class="shrink-0 size-5 rounded border border-black/10 hover:scale-125 duration-150 bg-primary-300"></div>
+            <div class="shrink-0 size-5 rounded border border-black/10 hover:scale-125 duration-150 bg-primary-400"></div>
+            <div class="shrink-0 size-5 rounded border border-black/10 hover:scale-125 duration-150 bg-primary-500"></div>
+            <div class="shrink-0 size-5 rounded border border-black/10 hover:scale-125 duration-150 bg-primary-600"></div>
+            <div class="shrink-0 size-5 rounded border border-black/10 hover:scale-125 duration-150 bg-primary-700"></div>
+            <div class="shrink-0 size-5 rounded border border-black/10 hover:scale-125 duration-150 bg-primary-800"></div>
+            <div class="shrink-0 size-5 rounded border border-black/10 hover:scale-125 duration-150 bg-primary-900"></div>
+            <div class="shrink-0 size-5 rounded border border-black/10 hover:scale-125 duration-150 bg-primary-950"></div>
+        </div>
+    </div>
+
     <div class="absolute top-4 right-4 flex items-center gap-4">
-        <button x-data="theme" @click="toggleTheme" class="p-2 rounded-brand hover:bg-300">
+        <button x-data="theme" @click="toggleTheme" data-tippy-content="Theme" class="p-2 rounded-brand hover:bg-300">
             <x-icon x-show="currentTheme === 'light'" x-cloak name="lucide-sun" class="size-5" />
             <x-icon x-show="currentTheme === 'dark'" x-cloak name="lucide-moon" class="size-5" />
             <x-icon x-show="currentTheme === 'system'" x-cloak name="lucide-sun-moon" class="size-5" />
         </button>
     </div>
 
-    <div class="min-h-dvh flex flex-col items-center justify-center bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.1)_1px,transparent_0)] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.05)_1px,transparent_0)] bg-size-[20px_20px]">
+    <div class="min-h-dvh flex flex-col items-center justify-center gap-8 bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.1)_1px,transparent_0)] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.05)_1px,transparent_0)] bg-size-[20px_20px]">
         <figure
             wire:click="newQuote"
             wire:key="{{ md5($quote['quote']) }}"
@@ -19,7 +35,7 @@
                 </p>
             </blockquote>
             <figcaption class="mt-4 text-base">
-            {{ $quote['author'] }}
+                {{ $quote['author'] }}
             </figcaption>
         </figure>
     </div>

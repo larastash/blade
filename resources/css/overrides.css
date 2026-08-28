@@ -4,7 +4,7 @@
 
 .tippy-box[data-theme~='custom'] .tippy-content {
     white-space: normal;
-    @apply px-2 py-1 text-white dark:text-black text-sm max-w-lg w-auto;
+    @apply px-2.5 py-1.5 text-white dark:text-black text-xs max-w-lg w-auto;
 }
 
 .tippy-box[data-theme~='custom'] .tippy-arrow {

@@ -7,27 +7,27 @@
 <ui-toast x-data x-on:toast-show.document="! $el.closest('ui-toast-group') && $el.showToast($event.detail)" popover="manual" position="{{ $position }}" wire:ignore>
     <template>
         <div {{ $attributes->only(['class'])->class('max-w-sm in-[ui-toast-group]:max-w-auto in-[ui-toast-group]:w-xs sm:in-[ui-toast-group]:w-sm') }} data-variant="" data-flux-toast-dialog>
-            <div class="p-3 flex rounded-brand bg-gray-100 dark:bg-300 border border-color-300 dark:border-color-400">
+            <div class="p-3 flex rounded-brand bg-gray-50 dark:bg-300 border border-color-300 dark:border-color-400">
                 <div class="flex-1 flex items-start gap-3 overflow-hidden">
                     <div class="flex-1 py-1 ps-1 flex gap-3">
                         {{-- Success icon --}}
-                        <div class="hidden [[data-flux-toast-dialog][data-variant=success]_&]:flex shrink-0 items-center justify-center size-8 rounded-brand bg-success-200 dark:bg-success-500/15">
-                            <x-icon name="lucide-circle-check" class="size-4 text-success-600 dark:text-success-500" />
+                        <div class="hidden [[data-flux-toast-dialog][data-variant=success]_&]:flex shrink-0 items-center justify-center size-8 rounded-brand bg-success-100 dark:bg-success-500/20">
+                            <x-icon name="lucide-circle-check" class="size-4 text-success-500 dark:text-success-400" />
                         </div>
 
                         {{-- Warning icon --}}
-                        <div class="hidden [[data-flux-toast-dialog][data-variant=warning]_&]:flex shrink-0 items-center justify-center size-8 rounded-brand bg-warning-200 dark:bg-warning-500/15">
-                            <x-icon name="lucide-triangle-alert" class="size-4 text-warning-600 dark:text-warning-500" />
+                        <div class="hidden [[data-flux-toast-dialog][data-variant=warning]_&]:flex shrink-0 items-center justify-center size-8 rounded-brand bg-warning-100 dark:bg-warning-500/20">
+                            <x-icon name="lucide-triangle-alert" class="size-4 text-warning-500 dark:text-warning-400" />
                         </div>
 
                         {{-- Info icon --}}
-                        <div class="hidden [[data-flux-toast-dialog][data-variant=info]_&]:flex shrink-0 items-center justify-center size-8 rounded-brand bg-info-200 dark:bg-info-500/15">
-                            <x-icon name="lucide-info" class="size-4 text-info-500 dark:text-info-500" />
+                        <div class="hidden [[data-flux-toast-dialog][data-variant=info]_&]:flex shrink-0 items-center justify-center size-8 rounded-brand bg-info-100 dark:bg-info-500/20">
+                            <x-icon name="lucide-info" class="size-4 text-info-500 dark:text-info-400" />
                         </div>
 
                         {{-- Danger icon --}}
-                        <div class="hidden [[data-flux-toast-dialog][data-variant=danger]_&]:flex shrink-0 items-center justify-center size-8 rounded-brand bg-danger-200 dark:bg-danger-500/15">
-                            <x-icon name="lucide-circle-x" class="size-4 text-danger-500 dark:text-danger-500" />
+                        <div class="hidden [[data-flux-toast-dialog][data-variant=danger]_&]:flex shrink-0 items-center justify-center size-8 rounded-brand bg-danger-100 dark:bg-danger-500/20">
+                            <x-icon name="lucide-circle-x" class="size-4 text-danger-500 dark:text-danger-400" />
                         </div>
 
                         <div class="pt-1">
