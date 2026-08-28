@@ -8,7 +8,11 @@
     </div>
 
     <div class="min-h-dvh flex flex-col items-center justify-center bg-[radial-gradient(circle_at_1px_1px,rgba(0,0,0,0.1)_1px,transparent_0)] dark:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.05)_1px,transparent_0)] bg-size-[20px_20px]">
-        <figure wire:click="refreshQuote" class="text-center font-serif">
+        <figure
+            wire:click="newQuote"
+            wire:key="{{ md5($quote['quote']) }}"
+            wire:loading.class="animate-pulse"
+            class="text-center font-serif">
             <blockquote>
                 <p class="text-2xl font-medium text-primary-500 max-w-lg text-pretty w-full leading-relaxed hyphens-auto">
                     {{ $quote['quote'] }}

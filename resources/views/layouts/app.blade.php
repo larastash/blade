@@ -36,10 +36,9 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
         @livewireStyles
-        {{-- @fluxAppearance --}}
     </head>
     <body x-data="app">
-        {{ $slot }}
+        @yield('content')
 
         @livewireScriptConfig
         @fluxScripts

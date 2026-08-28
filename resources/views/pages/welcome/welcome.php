@@ -10,16 +10,15 @@ new class extends Component
 
     public function mount()
     {
-        $this->refreshQuote();
+        $this->newQuote();
 
         Flux::toast(
             heading: 'Hello world 👋',
             text: 'This is a just a simple toast!',
-            variant: 'info',
         );
     }
 
-    public function refreshQuote()
+    public function newQuote()
     {
         $this->quote = $this->getRandomQuote();
     }
