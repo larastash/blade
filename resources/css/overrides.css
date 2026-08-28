@@ -1,16 +1,12 @@
 .tippy-box[data-theme~='custom'] {
-    @apply bg-gray-950 dark:bg-gray-200 rounded-brand;
+    @apply bg-gray-800 dark:bg-gray-200 rounded-lg;
 }
 
 .tippy-box[data-theme~='custom'] .tippy-content {
     white-space: normal;
-    @apply px-2.5 py-1.5 text-white dark:text-black text-xs max-w-lg w-auto;
+    @apply px-1.75 py-0.75 text-white dark:text-black text-xs max-w-lg w-auto;
 }
 
 .tippy-box[data-theme~='custom'] .tippy-arrow {
-    @apply text-black;
-}
-
-.dark .tippy-box[data-theme~='custom'] .tippy-arrow {
-    @apply text-gray-100;
+    @apply text-gray-800 dark:text-gray-200;
 }
