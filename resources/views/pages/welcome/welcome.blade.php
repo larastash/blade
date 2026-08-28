@@ -34,7 +34,7 @@
                     {{ $quote['quote'] }}
                 </p>
             </blockquote>
-            <figcaption class="mt-4 text-base">
+            <figcaption class="mt-4 text-lg">
                 {{ $quote['author'] }}
             </figcaption>
         </figure>
