@@ -17,7 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withSchedule(function (Schedule $schedule): void {
-        $schedule->command('telescope:prune --hours=48')->daily();
+        //
     })
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->alias([
