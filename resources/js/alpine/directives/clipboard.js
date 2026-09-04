@@ -1,9 +1,7 @@
-export default function (Alpine) {
-    Alpine.directive('clipboard', (el) => {
-        const text = el.textContent;
+export default function (el) {
+    const text = el.textContent;
 
-        el.addEventListener('click', () => {
-            navigator.clipboard.writeText(text);
-        });
+    el.addEventListener('click', () => {
+        navigator.clipboard.writeText(text);
     });
 }
