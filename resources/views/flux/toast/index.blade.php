@@ -46,7 +46,7 @@
 
                     {{-- Close button --}}
                     <ui-close class="flex items-center">
-                        <button type="button" class="inline-flex items-center font-medium justify-center gap-2 truncate disabled:opacity-50 dark:disabled:opacity-75 disabled:cursor-default h-8 text-sm rounded-brand w-8 bg-transparent hover:bg-300 dark:hover:bg-400 text-600 hover:text-100" as="button">
+                        <button type="button" class="inline-flex items-center font-medium justify-center gap-2 truncate disabled:opacity-50 dark:disabled:opacity-75 disabled:cursor-default h-6 text-sm rounded-brand w-6 bg-transparent hover:bg-300 dark:hover:bg-400 text-600 hover:text-100" as="button">
                             <div>
                                 <x-icon name="lucide-x" class="size-4" />
                             </div>

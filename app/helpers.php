@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Flux\ClassBuilder;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Auth;
 
@@ -71,3 +72,15 @@ if (! function_exists('plural')) {
         return $includeNumber ? $n.' '.$word : $word;
     }
 }
+
+if (! function_exists('classes')) {
+    /**
+     * @param array<string, bool>|array<int, string|int>|string  $classes
+     * @return ClassBuilder
+     */
+    function classes(array|string $classes): ClassBuilder
+    {
+        return (new ClassBuilder)->add($classes);
+    }
+}
+
