@@ -75,12 +75,10 @@ if (! function_exists('plural')) {
 
 if (! function_exists('classes')) {
     /**
-     * @param array<string, bool>|array<int, string|int>|string  $classes
-     * @return ClassBuilder
+     * @param  array<string, bool>|array<int, string|int>|string  $classes
      */
     function classes(array|string $classes): ClassBuilder
     {
         return (new ClassBuilder)->add($classes);
     }
 }
-
