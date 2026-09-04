@@ -28,14 +28,14 @@
             wire:click="newQuote"
             wire:key="{{ md5($quote['quote']) }}"
             wire:loading.class="animate-pulse"
-            class="text-center font-serif p-4">
+            class="text-center p-4">
             <blockquote>
-                <p class="text-2xl font-medium text-primary-500 max-w-lg text-pretty w-full leading-relaxed hyphens-auto">
+                <p class="text-3xl font-serif font-semibold text-primary-500 max-w-2xl text-pretty w-full leading-relaxed hyphens-auto">
                     {{ $quote['quote'] }}
                 </p>
             </blockquote>
-            <figcaption class="mt-4 text-lg">
-                {{ $quote['author'] }}
+            <figcaption class="mt-4 text-base font-medium">
+                - {{ $quote['author'] }}
             </figcaption>
         </figure>
     </div>

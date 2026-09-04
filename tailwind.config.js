@@ -13,9 +13,9 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['"Inter"', ...defaultTheme.fontFamily.sans],
-                serif: ['"Lora"', ...defaultTheme.fontFamily.serif],
-                mono: ['"Source Code Pro"', ...defaultTheme.fontFamily.mono],
+                sans: ['"Noto Sans"', ...defaultTheme.fontFamily.sans],
+                serif: ['"Noto Serif"', ...defaultTheme.fontFamily.serif],
+                mono: ['"Noto Sans Mono"', ...defaultTheme.fontFamily.mono],
             },
             colors: {
                 primary: colors.orange,
