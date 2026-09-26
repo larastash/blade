@@ -68,10 +68,6 @@
         "lint:check": [
             "pint --parallel --test"
         ],
-        "ci:check": [
-            "Composer\\Config::disableProcessTimeout",
-            "@test"
-        ],
         "types:check": [
             "phpstan analyse"
         ],
