@@ -28,7 +28,7 @@
             wire:click="newQuote"
             wire:key="{{ md5($quote['quote']) }}"
             wire:loading.class="animate-pulse"
-            class="text-center p-4">
+            class="text-center p-4 select-none">
             <blockquote>
                 <p class="text-3xl font-serif font-semibold text-primary-500 max-w-2xl text-pretty w-full leading-relaxed hyphens-auto">
                     {{ $quote['quote'] }}
