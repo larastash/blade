@@ -1,11 +1,15 @@
 {
     "agents": [
+        "claude_code",
         "copilot"
     ],
     "cloud": false,
     "guidelines": true,
     "mcp": true,
     "nightwatch": false,
+    "packages": [
+        "malevich/malevich"
+    ],
     "sail": false,
     "skills": [
         "infer-conventions",
@@ -14,6 +18,7 @@
         "telescope-debugging",
         "fluxui-development",
         "livewire-development",
-        "tailwindcss-development"
+        "tailwindcss-development",
+        "malevich-development"
     ]
 }
