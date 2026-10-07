@@ -4377,16 +4377,16 @@
         },
         {
             "name": "malevich/malevich",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chipslays/malevich.git",
-                "reference": "c28eb443d6b6a1759390fb271f90bd5831b0ffec"
+                "reference": "e6277fcc47f6819a3c8b475e071f700f03280820"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chipslays/malevich/zipball/c28eb443d6b6a1759390fb271f90bd5831b0ffec",
-                "reference": "c28eb443d6b6a1759390fb271f90bd5831b0ffec",
+                "url": "https://api.github.com/repos/chipslays/malevich/zipball/e6277fcc47f6819a3c8b475e071f700f03280820",
+                "reference": "e6277fcc47f6819a3c8b475e071f700f03280820",
                 "shasum": ""
             },
             "require": {
@@ -4438,7 +4438,7 @@
                 "issues": "https://github.com/chipslays/malevich/issues",
                 "source": "https://github.com/chipslays/malevich"
             },
-            "time": "2026-10-07T21:14:50+00:00"
+            "time": "2026-10-07T21:31:58+00:00"
         },
         {
             "name": "mallardduck/blade-lucide-icons",
