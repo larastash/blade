@@ -84,7 +84,7 @@ if (! function_exists('money')) {
      * @param  string  $in  Код валюты ISO 4217 (RUB, USD, EUR, ...)
      * @param  string|null  $locale  Локаль форматирования (null — взять локаль приложения)
      * @param  int|null  $precision  Количество знаков после запятой (null — по умолчанию для валюты)
-     * @return string Отформатированная строка с символом валюты
+     * @return string|false Отформатированная строка с символом валюты
      *
      * @example money(1234.5) // "1 234,50 ₽"
      * @example money(1234.5, 'USD', 'en_US') // "$1,234.50"
@@ -96,7 +96,7 @@ if (! function_exists('money')) {
         string $in = 'RUB',
         ?string $locale = 'ru_RU',
         ?int $precision = null
-    ): string {
+    ): string|false {
         return Number::currency($number, $in, $locale, $precision);
     }
 }
