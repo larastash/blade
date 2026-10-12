@@ -937,6 +937,7 @@
                     "type": "yoomoney"
                 }
             ],
+            "abandoned": true,
             "time": "2025-02-24T15:35:24+00:00"
         },
         {
@@ -1031,6 +1032,7 @@
                     "type": "yoomoney"
                 }
             ],
+            "abandoned": "illuminate/support",
             "time": "2026-04-03T15:06:29+00:00"
         },
         {
@@ -2179,16 +2181,16 @@
         },
         {
             "name": "laravel-lang/lang",
-            "version": "15.37.3",
+            "version": "15.37.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Laravel-Lang/lang.git",
-                "reference": "a3504212776c77984273beb9b7ef9ecbacc2e4e4"
+                "reference": "a3a9ef9b039d10db442bfb3bed0a97c9b50f30a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/a3504212776c77984273beb9b7ef9ecbacc2e4e4",
-                "reference": "a3504212776c77984273beb9b7ef9ecbacc2e4e4",
+                "url": "https://api.github.com/repos/Laravel-Lang/lang/zipball/a3a9ef9b039d10db442bfb3bed0a97c9b50f30a7",
+                "reference": "a3a9ef9b039d10db442bfb3bed0a97c9b50f30a7",
                 "shasum": ""
             },
             "require": {
@@ -2249,7 +2251,7 @@
                     "type": "yoomoney"
                 }
             ],
-            "time": "2026-10-01T08:03:34+00:00"
+            "time": "2026-10-09T09:55:05+00:00"
         },
         {
             "name": "laravel-lang/locale-list",
@@ -4377,16 +4379,16 @@
         },
         {
             "name": "malevich/malevich",
-            "version": "1.0.5",
+            "version": "1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/chipslays/malevich.git",
-                "reference": "e6277fcc47f6819a3c8b475e071f700f03280820"
+                "reference": "58f3c05cb4456290e2f0e2d981251937f0abae80"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/chipslays/malevich/zipball/e6277fcc47f6819a3c8b475e071f700f03280820",
-                "reference": "e6277fcc47f6819a3c8b475e071f700f03280820",
+                "url": "https://api.github.com/repos/chipslays/malevich/zipball/58f3c05cb4456290e2f0e2d981251937f0abae80",
+                "reference": "58f3c05cb4456290e2f0e2d981251937f0abae80",
                 "shasum": ""
             },
             "require": {
@@ -4438,20 +4440,20 @@
                 "issues": "https://github.com/chipslays/malevich/issues",
                 "source": "https://github.com/chipslays/malevich"
             },
-            "time": "2026-10-07T21:31:58+00:00"
+            "time": "2026-10-09T17:36:04+00:00"
         },
         {
             "name": "mallardduck/blade-lucide-icons",
-            "version": "2.0.24",
+            "version": "2.0.27",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mallardduck/blade-lucide-icons.git",
-                "reference": "48c478b85c46c06029e3788fdea467e7dd738076"
+                "reference": "d536bf823ebc01765e179fda5d9c4ddfc489956d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mallardduck/blade-lucide-icons/zipball/48c478b85c46c06029e3788fdea467e7dd738076",
-                "reference": "48c478b85c46c06029e3788fdea467e7dd738076",
+                "url": "https://api.github.com/repos/mallardduck/blade-lucide-icons/zipball/d536bf823ebc01765e179fda5d9c4ddfc489956d",
+                "reference": "d536bf823ebc01765e179fda5d9c4ddfc489956d",
                 "shasum": ""
             },
             "require": {
@@ -4496,9 +4498,9 @@
             ],
             "support": {
                 "issues": "https://github.com/mallardduck/blade-lucide-icons/issues",
-                "source": "https://github.com/mallardduck/blade-lucide-icons/tree/2.0.24"
+                "source": "https://github.com/mallardduck/blade-lucide-icons/tree/2.0.27"
             },
-            "time": "2026-10-05T03:50:16+00:00"
+            "time": "2026-10-11T03:43:25+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -8501,12 +8503,12 @@
             "version": "v5.7.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/vlucas/phpdotenv.git",
+                "url": "https://github.com/phpdotenv/phpdotenv.git",
                 "reference": "301c07936b16d88628b126b01d082ba153cf4c40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/301c07936b16d88628b126b01d082ba153cf4c40",
+                "url": "https://api.github.com/repos/phpdotenv/phpdotenv/zipball/301c07936b16d88628b126b01d082ba153cf4c40",
                 "reference": "301c07936b16d88628b126b01d082ba153cf4c40",
                 "shasum": ""
             },
@@ -8658,16 +8660,16 @@
     "packages-dev": [
         {
             "name": "brianium/paratest",
-            "version": "v7.26.0",
+            "version": "v7.26.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/paratestphp/paratest.git",
-                "reference": "ed3bf1b914466ab50439dfffd968bad37c22a0c0"
+                "reference": "4660303009de20706b71d2df487bb89fb4d8a4c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/paratestphp/paratest/zipball/ed3bf1b914466ab50439dfffd968bad37c22a0c0",
-                "reference": "ed3bf1b914466ab50439dfffd968bad37c22a0c0",
+                "url": "https://api.github.com/repos/paratestphp/paratest/zipball/4660303009de20706b71d2df487bb89fb4d8a4c2",
+                "reference": "4660303009de20706b71d2df487bb89fb4d8a4c2",
                 "shasum": ""
             },
             "require": {
@@ -8681,7 +8683,7 @@
                 "phpunit/php-code-coverage": "^14.4.1",
                 "phpunit/php-file-iterator": "^7.0.2",
                 "phpunit/php-timer": "^9",
-                "phpunit/phpunit": "^13.4.0",
+                "phpunit/phpunit": "^13.4.1",
                 "sebastian/environment": "^9.3.3",
                 "symfony/console": "^7.4.20 || ^8.1.8",
                 "symfony/process": "^7.4.19 || ^8.1.7"
@@ -8691,10 +8693,10 @@
                 "ext-pcntl": "*",
                 "ext-pcov": "*",
                 "ext-posix": "*",
-                "phpstan/phpstan": "^2.2.16",
+                "phpstan/phpstan": "^2.3.1",
                 "phpstan/phpstan-deprecation-rules": "^2.0.5",
-                "phpstan/phpstan-phpunit": "^2.0.21",
-                "phpstan/phpstan-strict-rules": "^2.0.12",
+                "phpstan/phpstan-phpunit": "^2.1.1",
+                "phpstan/phpstan-strict-rules": "^2.1.0",
                 "symfony/filesystem": "^7.4.18 || ^8.1.6"
             },
             "bin": [
@@ -8735,7 +8737,7 @@
             ],
             "support": {
                 "issues": "https://github.com/paratestphp/paratest/issues",
-                "source": "https://github.com/paratestphp/paratest/tree/v7.26.0"
+                "source": "https://github.com/paratestphp/paratest/tree/v7.26.1"
             },
             "funding": [
                 {
@@ -8747,7 +8749,7 @@
                     "type": "paypal"
                 }
             ],
-            "time": "2026-10-04T06:32:34+00:00"
+            "time": "2026-10-10T20:10:31+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -10867,11 +10869,11 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/b1f9890d9af53a25c58129e78f0aadd31f90d7f4",
-                "reference": "b1f9890d9af53a25c58129e78f0aadd31f90d7f4",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/6155239b488e95d26d1ebd95c6b4bb294d7f09db",
+                "reference": "6155239b488e95d26d1ebd95c6b4bb294d7f09db",
                 "shasum": ""
             },
             "require": {
@@ -10927,7 +10929,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-10-06T06:15:36+00:00"
+            "time": "2026-10-08T21:09:11+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
