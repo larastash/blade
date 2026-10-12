@@ -4,9 +4,9 @@
 
 .tippy-box[data-theme~='custom'] .tippy-content {
     white-space: normal;
-    @apply px-3 py-1.5 text-color-100 dark:text-color-900 text-[13px] leading-relaxed max-w-lg w-auto;
+    @apply px-3 py-1.5 text-color-100 text-[13px] leading-relaxed max-w-lg w-auto;
 }
 
 .tippy-box[data-theme~='custom'] .tippy-arrow {
-    @apply text-color-900 dark:text-color-200;
+    @apply text-color-900;
 }

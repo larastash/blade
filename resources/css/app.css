@@ -2,12 +2,12 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@import '@vendor/livewire/flux/dist/flux.css';
-
 @plugin "@tailwindcss/typography";
 
 @config "../../tailwind.config.js";
 
+@import "tw-shimmer";
+@import '@vendor/livewire/flux/dist/flux.css';
 @import "@css/theme.css";
 @import "@css/utilities.css";
 @import "@css/components.css";

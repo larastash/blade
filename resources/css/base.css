@@ -15,24 +15,15 @@
         @apply bg-color-100 text-color-900 text-sm font-sans antialiased;
     }
 
-    *,
-    ::after,
-    ::before,
-    ::backdrop,
-    ::file-selector-button {
+    *, ::after, ::before, ::backdrop, ::file-selector-button {
         @apply border-color-200;
     }
 
-    button,
-    a,
-    textarea,
-    input,
-    select {
+    button, a, textarea, input, select {
         @apply outline-none focus:outline-none;
     }
 
-    button:not(:disabled),
-    [role="button"]:not(:disabled) {
+    button:not(:disabled), [role="button"]:not(:disabled) {
         cursor: pointer;
     }
 }
