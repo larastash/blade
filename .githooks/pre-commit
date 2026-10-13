@@ -1,0 +1,18 @@
+#!/bin/sh
+# Lint staged PHP files with Pint and run static analysis before every commit.
+
+command -v php >/dev/null 2>&1 || {
+    echo "pre-commit: php not found in PATH, skipping checks."
+    exit 0
+}
+
+files=$(git diff --cached --name-only --diff-filter=ACM -- '*.php' ':!lang/*')
+
+[ -z "$files" ] && exit 0
+
+echo "$files" | xargs php vendor/bin/pint --test || {
+    echo "Pint failed. Run \"composer lint\" and stage the fixes."
+    exit 1
+}
+
+php vendor/bin/phpstan analyse --no-progress --memory-limit=1G

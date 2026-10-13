@@ -11,3 +11,8 @@ parameters:
         - routes/
 
     level: 7
+
+    excludePaths:
+        # Published vendor stubs
+        - config/pulse.php
+        - database/migrations/*_create_pulse_tables.php

@@ -1,5 +1,9 @@
 <?php
 
+use Carbon\Carbon;
+use Carbon\CarbonImmutable;
+use Illuminate\Support\Carbon as IlluminateCarbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Str;
 
 return [
@@ -50,7 +54,7 @@ return [
         'file' => [
             'driver' => 'file',
             'path' => storage_path('framework/cache/data'),
-            'lock_path' => storage_path('framework/cache/data'),
+            'lock_path' => storage_path('framework/cache/locks'),
         ],
 
         'storage' => [
@@ -129,8 +133,16 @@ return [
     | storage. By default, no PHP classes will be unserialized from your
     | cache to prevent gadget chain attacks if your APP_KEY is leaked.
     |
+    | Only the value objects that Pulse caches on its dashboard are allowed.
+    |
     */
 
-    'serializable_classes' => false,
+    'serializable_classes' => [
+        Collection::class,
+        stdClass::class,
+        Carbon::class,
+        CarbonImmutable::class,
+        IlluminateCarbon::class,
+    ],
 
 ];

@@ -34,8 +34,5 @@ jobs:
       - name: Setup Application
         run: composer setup
 
-      - name: Run Tests
-        run: composer lint:check
-
-      - name: Run Tests
-        run: composer test
+      - name: Run CI Checks
+        run: composer ci:check
