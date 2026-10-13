@@ -8,31 +8,22 @@
     }
 
     html {
-        @apply scrollbar-thumb-primary-500 scrollbar-track-gray-100 dark:scrollbar-track-gray-900;
+        @apply scrollbar-thumb-primary-500 scrollbar-track-transparent;
     }
 
     body {
-        @apply bg-200 text-300 text-sm font-sans antialiased;
+        @apply bg-color-100 text-color-900 text-sm font-sans antialiased;
     }
 
-    *,
-    ::after,
-    ::before,
-    ::backdrop,
-    ::file-selector-button {
-        @apply border-color-300;
+    *, ::after, ::before, ::backdrop, ::file-selector-button {
+        @apply border-color-200;
     }
 
-    button,
-    a,
-    textarea,
-    input,
-    select {
+    button, a, textarea, input, select {
         @apply outline-none focus:outline-none;
     }
 
-    button:not(:disabled),
-    [role="button"]:not(:disabled) {
+    button:not(:disabled), [role="button"]:not(:disabled) {
         cursor: pointer;
     }
 }

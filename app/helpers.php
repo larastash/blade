@@ -3,13 +3,14 @@
 use App\Models\User;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Number;
 
 if (! function_exists('user')) {
     /**
-     * Get the currently authenticated user from the specified guard.
+     * Получить текущего аутентифицированного пользователя из указанного guard.
      *
-     * @param  string|null  $guard  The authentication guard name (optional)
-     * @return User|Authenticatable|null The authenticated user instance or null if not authenticated
+     * @param  string|null  $guard  Имя guard аутентификации (необязательно)
+     * @return User|Authenticatable|null Экземпляр аутентифицированного пользователя или null, если пользователь не аутентифицирован
      */
     function user(?string $guard = null): User|Authenticatable|null
     {
@@ -26,17 +27,17 @@ if (! function_exists('user')) {
 
 if (! function_exists('plural')) {
     /**
-     * Get the correct plural form of a word based on the given number (Russian language).
+     * Получить правильную форму множественного числа слова в зависимости от заданного числа (русский язык).
      *
-     * Handles Russian pluralization rules:
-     * - Form 0: nominative singular (1, 21, 31... but not 11)
-     * - Form 1: genitive singular (2-4, 22-24... but not 12-14)
-     * - Form 2: genitive plural (0, 5-20, 25-30...)
+     * Учитывает правила образования множественного числа в русском языке:
+     * - Форма 0: именительный падеж единственного числа (1, 21, 31... но не 11)
+     * - Форма 1: родительный падеж единственного числа (2–4, 22–24... но не 12–14)
+     * - Форма 2: родительный падеж множественного числа (0, 5–20, 25–30...)
      *
-     * @param  int|float  $n  The number to determine plural form
-     * @param  array<int, string>  $forms  Array of word forms [nominative_singular, genitive_singular, genitive_plural]
-     * @param  bool  $includeNumber  Whether to prepend the number to the result
-     * @return string The formatted string with correct plural form
+     * @param  int|float  $n  Число, по которому определяется форма множественного числа
+     * @param  array<int, string>  $forms  Массив форм слова [именительный падеж ед. ч., родительный падеж ед. ч., родительный падеж мн. ч.]
+     * @param  bool  $includeNumber  Добавлять ли число перед результатом
+     * @return string Отформатированная строка с правильной формой множественного числа
      *
      * @example plural(1, ['яблоко', 'яблока', 'яблок']) // "1 яблоко"
      * @example plural(5, ['яблоко', 'яблока', 'яблок']) // "5 яблок"
@@ -69,5 +70,33 @@ if (! function_exists('plural')) {
         }
 
         return $includeNumber ? $n.' '.$word : $word;
+    }
+}
+
+if (! function_exists('money')) {
+    /**
+     * Форматирует число как денежную сумму с символом валюты.
+     *
+     * Обёртка над Laravel `Number::currency()`, использующая расширение `intl`.
+     * По умолчанию форматирует в рублях с российской локалью.
+     *
+     * @param  int|float  $number  Сумма для форматирования
+     * @param  string  $in  Код валюты ISO 4217 (RUB, USD, EUR, ...)
+     * @param  string|null  $locale  Локаль форматирования (null — взять локаль приложения)
+     * @param  int|null  $precision  Количество знаков после запятой (null — по умолчанию для валюты)
+     * @return string|false Отформатированная строка с символом валюты
+     *
+     * @example money(1234.5) // "1 234,50 ₽"
+     * @example money(1234.5, 'USD', 'en_US') // "$1,234.50"
+     * @example money(1000, 'RUB', 'ru_RU', 0) // "1 000 ₽"
+     * @example money(1234.567, 'EUR', 'de_DE', 3) // "1.234,567 €"
+     */
+    function money(
+        int|float $number,
+        string $in = 'RUB',
+        ?string $locale = 'ru_RU',
+        ?int $precision = null
+    ): string|false {
+        return Number::currency($number, $in, $locale, $precision);
     }
 }

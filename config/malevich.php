@@ -36,6 +36,32 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Cases Directive
+    |--------------------------------------------------------------------------
+    |
+    | Name of the directive that declares an axis grouped by its values:
+    | @cases('variant', ['teal' => ['default' => '...', 'title' => '...']]).
+    | Change it if 'cases' collides with a directive of your own.
+    |
+    */
+
+    'cases_directive' => 'cases',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Has Directive
+    |--------------------------------------------------------------------------
+    |
+    | Name of the conditional that renders its body only when an element has
+    | classes: @has('glow') <div @ui('glow')></div> @endif. Change it if
+    | 'has' collides with a directive of your own.
+    |
+    */
+
+    'has_directive' => 'has',
+
+    /*
+    |--------------------------------------------------------------------------
     | Components
     |--------------------------------------------------------------------------
     |
@@ -51,8 +77,8 @@ return [
     */
 
     'components' => [
-        'path' => resource_path('views/components/ui'),
-        'prefix' => 'ui',
+        'path' => resource_path('views/components'),
+        'prefix' => null,
     ],
 
     /*
