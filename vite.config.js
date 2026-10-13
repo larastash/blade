@@ -22,7 +22,8 @@ export default defineConfig({
                 '**/.cursor/**',
                 '**/.junie/**',
                 '**/storage/framework/views/**',
-                '**/vendor/**',
+                // только composer-папка vendor/ в корне
+                (file) => path.resolve(file).startsWith(path.resolve(import.meta.dirname, 'vendor') + path.sep),
             ],
         },
     },

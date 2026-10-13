@@ -1,5 +1,6 @@
 import app from '@js/alpine/components/app';
 import theme from '@js/alpine/components/theme';
+import autofocus from '@js/alpine/directives/autofocus';
 import clipboard from '@js/alpine/directives/clipboard';
 import appStore from '@js/alpine/stores/appStore';
 import Autosize from '@marcreichel/alpine-autosize';
@@ -9,7 +10,7 @@ document.addEventListener('alpine:init', () => {
     Alpine.data('app', app);
     Alpine.data('theme', theme);
 
-    Alpine.directive('autofocus', clipboard);
+    Alpine.directive('autofocus', autofocus);
     Alpine.directive('clipboard', clipboard);
 
     Alpine.store('app', appStore);
