@@ -1,18 +1,18 @@
 # Directives reference
 
-All directives must be declared **before** `@ui`.
+All directives must be declared **before** `@attributes`.
 
 | Directive | Use |
 |---|---|
 | `@base('classes')` | Classes always present on the main element. |
-| `@base('target', 'classes')` | Always-on classes for inner element `@ui('target')`. Can be repeated, classes add up. |
+| `@base('target', 'classes')` | Always-on classes for inner element `@attributes('target')`. Can be repeated, classes add up. |
 | `@variant([...])`, `@color([...])`, `@size([...])` | Class map for `$variant` / `$color` / `$size`. Identical behaviour, only the name differs. |
-| `@directive('radius', [...])` | Class map for any option name. |
-| `@directive('radius', 'target', [...])` / `@variant('target', [...])` | Same, for an inner element. |
-| `@cases('axis', [value => [target => classes]])` | The same class maps as `@variant('target', [...])` per element, grouped by value. |
+| `@option('radius', [...])` | Class map for any option name. |
+| `@option('radius', 'target', [...])` / `@variant('target', [...])` | Same, for an inner element. |
+| `@cases('option', [value => [target => classes]])` | The same class maps as `@variant('target', [...])` per element, grouped by value. |
 | `@compound([conds], 'classes')` | Classes when ALL conditions match. A list value means "any of". Added after all class maps. |
 | `@compound('target', [conds], 'classes')` | Same for an inner element. |
-| `@preset('name', [...])` | Named bundle of values, chosen with `preset="name"`. |
+| `@compound([conds], targets: ['target' => classes])` | One combination, classes for several elements (`default` = main element). |
 
 ## Class maps
 
@@ -26,9 +26,9 @@ Key = option value, item = classes. Classes can be a string, a list, or `@class`
 ])
 ```
 
-- Unknown or `null` value: nothing is added, no error.
+- Unknown or `null` value: nothing is added, no error. With `Malevich::strict()` an unknown value throws (see below).
 - Keys are case-sensitive.
-- Booleans are looked up as `'true'` / `'false'`: `@directive('checked', ['true' => '...', 'false' => '...'])`.
+- Booleans are looked up as `'true'` / `'false'`: `@option('checked', ['true' => '...', 'false' => '...'])`.
 - Backed enums by value, plain enums by case name, numbers by string form (`:level="2"` -> `'2'`).
 - `'*'` key = always. Works, but prefer `@base`.
 - Order: classes are added in the order directives appear in the file. Duplicates removed.
@@ -44,7 +44,7 @@ Use it when one prop changes the classes of several elements and you want to rea
 ])
 ```
 
-- First argument: the option name (`variant`, `size`, any `@directive` name).
+- First argument: the option name (`variant`, `size`, any `@option` name).
 - Inner keys are targets, `default` is the main element. A plain string or list as a value styles the main element.
 - It fills the same slots as one `@variant('target', [...])` per element; several `@cases` calls add up. A later `@variant([...])` for the same element and option **replaces** the theme's classes.
 - Conditional classes (`['a', 'b' => $cond]`) go under a target key, never directly as a value.
@@ -63,46 +63,35 @@ Use it when one prop changes the classes of several elements and you want to rea
 - Works with props that have no class map.
 - If the class depends on one option only, use that option's map instead.
 
-## `@preset`
-
-```blade
-@props(['preset' => null, 'variant' => null, 'padding' => null])
-
-@preset('featured', ['variant' => 'elevated', 'padding' => 'lg'])
-@preset('danger', [
-    'default' => ['color' => 'red'],
-    'icon' => ['color' => 'red', 'size' => 'lg'],
-])
-```
-
-- Chosen by the `preset` prop/attribute.
-- A preset only provides **fallback** values; explicit values win (`<x-card preset="featured" padding="sm">`).
-- A prop with a non-null default counts as explicit, so options in preset components must default to `null`.
-- Presets can be keyed by target (`default` = main element).
-
 ## Where values come from (first non-null wins)
 
-1. Template variable with the same name (normally `@props`, which also provides the default).
-2. Attribute with the same name on the component tag (if not in `@props`).
-3. Active preset.
+1. Explicit call: `$attributes->size('sm')`.
+2. Template variable with the same name (normally `@props`).
+3. Attribute with the same name on the component tag (if not in `@props`).
+
+The default of an option is its `@props` default.
 
 Per-target values: pass an array keyed by target, main element is `default`:
 `<x-button :size="['default' => 'lg', 'spinner' => 'sm']" />`.
 
 ## Directive names and collisions
 
-- `@ui`, `@cases`, `@has` are renamable: `render_directive`, `cases_directive`, `has_directive` in `config/malevich.php`. `@base`, `@compound`, `@preset`, `@directive` are fixed.
+- Every directive name is configurable in `config/malevich.php` under `directives` (`attributes`, `base`, `option`, `compound`, `cases`, `has`). In a project that renamed them, use the project's names.
 - Boot throws if a configured name is a Blade built-in, is already registered by the app or another package, is a Malevich name, is a method of `$attributes`, or is invalid.
 - A directive written without parentheses is left as text, so Tailwind's `@variant dark` inside a template stay intact.
+
+## Strict mode
+
+`Malevich::strict(! app()->isProduction());` in `AppServiceProvider::boot()` (like `Model::shouldBeStrict()`). An option value that is not a key of its class map then throws `Malevich\Exceptions\UnknownValueException`: `Malevich: size [xl] is not defined; expected one of: sm, md, lg.` Checked whatever the source (tag or `@props` default). Not an error: `null`, `'*'`, an element without a map for that option (or only a `'*'` key), a value that is a key on another element's map or tested by a `@compound`, and `false` on a `['true' => ...]` map. Reset by `Malevich::flush()`.
 
 ## Custom option directives
 
 ```php
 // config/malevich.php
-'directives' => ['variant', 'size', 'color', 'radius'],
+'options' => ['variant', 'size', 'color', 'radius'],
 ```
 
-Gives `@radius([...])` and `$attributes->radius()`; `make:malevich` will scaffold it too. Run `php artisan view:clear` afterwards. Boot throws if the name is a built-in Blade directive (`if`, `class`, `props`, ...), a Malevich directive (`base`, `compound`, `preset`, `directive`, the render directive), a method of `$attributes` (`merge`, `get`, `only`, ...), or contains anything but letters, digits, `_`. For one or two components use `@directive('name', [...])` instead of registering.
+Gives `@radius([...])` and `$attributes->radius()`; `make:malevich` will scaffold it too. Run `php artisan view:clear` afterwards. Boot throws if the name is a built-in Blade directive (`if`, `class`, `props`, ...), a Malevich directive (`base`, `compound`, `option`, the render directive), a method of `$attributes` (`merge`, `get`, `only`, ...), or contains anything but letters, digits, `_`. For one or two components use `@option('name', [...])` instead of registering.
 
 ## Sharing class maps
 
@@ -116,5 +105,5 @@ Move maps into a partial and include after `@props`:
 ```blade
 @props(['size' => 'md'])
 @include('components.ui.partials.sizes')
-<button @ui>{{ $slot }}</button>
+<button @attributes>{{ $slot }}</button>
 ```

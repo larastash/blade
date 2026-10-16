@@ -4,18 +4,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Axes
+    | Options
     |--------------------------------------------------------------------------
     |
-    | Every name listed here becomes a Blade directive that declares a class
-    | map (@variant([...])) and a fluent method on the attribute bag
-    | ($attributes->variant('solid')). Add your own: 'radius', 'shadow', ...
+    | An option is a prop that picks classes: <x-button variant="ghost">.
+    | Every name listed here gets its own Blade directive that declares the
+    | class map (@variant([...])) and a method on the attribute bag
+    | ($attributes->variant('ghost')). Add your own: 'radius', 'shadow', ...
     |
-    | Any other name still works through @directive('name', [...]).
+    | Any other name works through @option('name', [...]).
     |
     */
 
-    'directives' => [
+    'options' => [
         'variant',
         'size',
         'color',
@@ -23,42 +24,24 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Render Directive
+    | Directive Names
     |--------------------------------------------------------------------------
     |
-    | Name of the directive that prints an element's resolved attributes:
-    | <button @ui> ... </button>, <svg @ui('icon')>. Change it if 'ui'
-    | collides with a directive of your own.
+    | The name of every directive Malevich registers, by what it does. Rename
+    | any of them if it collides with a directive of your own or of another
+    | package - Malevich checks the names on boot and tells you about a clash.
+    | Run `php artisan view:clear` after changing them.
     |
     */
 
-    'render_directive' => 'ui',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Cases Directive
-    |--------------------------------------------------------------------------
-    |
-    | Name of the directive that declares an axis grouped by its values:
-    | @cases('variant', ['teal' => ['default' => '...', 'title' => '...']]).
-    | Change it if 'cases' collides with a directive of your own.
-    |
-    */
-
-    'cases_directive' => 'cases',
-
-    /*
-    |--------------------------------------------------------------------------
-    | Has Directive
-    |--------------------------------------------------------------------------
-    |
-    | Name of the conditional that renders its body only when an element has
-    | classes: @has('glow') <div @ui('glow')></div> @endif. Change it if
-    | 'has' collides with a directive of your own.
-    |
-    */
-
-    'has_directive' => 'has',
+    'directives' => [
+        'attributes' => 'attributes',
+        'base' => 'base',
+        'option' => 'option',
+        'compound' => 'compound',
+        'cases' => 'cases',
+        'has' => 'has',
+    ],
 
     /*
     |--------------------------------------------------------------------------
@@ -92,5 +75,86 @@ return [
     */
 
     'default_target' => 'default',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Data Attributes
+    |--------------------------------------------------------------------------
+    |
+    | Put the resolved value of every option on the component's main element:
+    | <button data-variant="primary" data-size="lg">. Style children with
+    | Tailwind's group-data-[variant=primary]: or select elements in tests.
+    | A boolean option is written as data-loading when true, left out when false.
+    |
+    */
+
+    'data_attributes' => false,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Class Merging
+    |--------------------------------------------------------------------------
+    |
+    | 'auto'  - resolve Tailwind conflicts (px-4 vs px-8) with tailwind-merge
+    |           when gehrisandro/tailwind-merge-laravel (or -php) is installed
+    | false   - only remove duplicate classes
+    |
+    | Malevich::mergeClassesUsing() in a service provider always wins.
+    |
+    */
+
+    'merge_classes' => 'auto',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Strict Mode
+    |--------------------------------------------------------------------------
+    |
+    | Throw when an option gets a value its class maps don't define
+    | (size="xl"), instead of silently rendering no classes. Meant for
+    | development and tests. Malevich::strict(...) in a service provider
+    | wins over this value.
+    |
+    */
+
+    'strict' => env('MALEVICH_STRICT', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Debug Mode
+    |--------------------------------------------------------------------------
+    |
+    | Print an HTML comment in front of every element that explains its
+    | classes: the component, each option's value and where it came from,
+    | and which declaration added which classes. Never in production.
+    | Malevich::debug(...) in a service provider wins over this value.
+    |
+    */
+
+    'debug' => env('MALEVICH_DEBUG', false),
+
+    /*
+    |--------------------------------------------------------------------------
+    | Component Catalog
+    |--------------------------------------------------------------------------
+    |
+    | A page that renders every component with every value of its options:
+    | http://your-app.test/malevich. Off unless the app runs locally; set
+    | MALEVICH_CATALOG=true or false to decide yourself.
+    |
+    | head - HTML (Blade) for the page's <head>. When null, the page loads the
+    |        same Vite entries as your app (the `input` of vite.config.js), so
+    |        your theme, custom colors, fonts and JS apply to the previews.
+    |        Set it when your CSS comes from somewhere else, e.g.
+    |        '<link rel="stylesheet" href="/css/app.css">'.
+    |
+    */
+
+    'catalog' => [
+        'enabled' => env('MALEVICH_CATALOG', true),
+        'path' => 'malevich',
+        'middleware' => ['web'],
+        'head' => null,
+    ],
 
 ];
