@@ -48,7 +48,8 @@ return [
     | Components
     |--------------------------------------------------------------------------
     |
-    | The directory where `php artisan make:malevich` writes new components.
+    | The directory where `php artisan make:malevich` writes new components
+    | and `php artisan malevich:add` copies kit components.
     | If it exists, Malevich registers it with Blade as anonymous components.
     | Subfolders become dots: forms/input.blade.php is <x-forms.input>.
     |
@@ -135,12 +136,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Component Catalog
+    | Component Playground
     |--------------------------------------------------------------------------
     |
     | A page that renders every component with every value of its options:
     | http://your-app.test/malevich. Off unless the app runs locally; set
-    | MALEVICH_CATALOG=true or false to decide yourself.
+    | MALEVICH_PLAYGROUND=true or false to decide yourself.
     |
     | head - HTML (Blade) for the page's <head>. When null, the page loads the
     |        same Vite entries as your app (the `input` of vite.config.js), so
@@ -150,8 +151,8 @@ return [
     |
     */
 
-    'catalog' => [
-        'enabled' => env('MALEVICH_CATALOG', true),
+    'playground' => [
+        'enabled' => env('MALEVICH_PLAYGROUND', false),
         'path' => 'malevich',
         'middleware' => ['web'],
         'head' => null,
