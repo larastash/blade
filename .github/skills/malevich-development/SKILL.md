@@ -47,6 +47,7 @@ Never write `$color` in the markup: `@attributes` reads the option from `@props`
 @size('icon', ['sm' => 'size-3', 'md' => 'size-4'])       {{-- inner element "icon" --}}
 @base('title', 'font-semibold')                           {{-- always-on for inner element --}}
 @cases('variant', ['teal' => ['default' => '...', 'title' => '...'], 'dark' => [...]])   {{-- same maps, grouped by value --}}
+@cases('size', ['sm' => ['-mx-2' => ! $iconOnly]], when: ['inset' => true, 'variant' => ['ghost', 'link']])
 @compound(['variant' => 'primary', 'size' => 'lg'], 'shadow-lg')   {{-- ALL conditions; list = any of --}}
 @compound(['loading' => true], 'cursor-wait')             {{-- flag --}}
 @compound(['size' => 'sm'], targets: ['default' => 'px-2', 'icon' => 'size-3'])   {{-- one combination, several elements --}}
@@ -54,13 +55,14 @@ Never write `$color` in the markup: `@attributes` reads the option from `@props`
 <button @attributes(merge: ['type' => 'button'])>                 {{-- default attributes, user wins --}}
     <svg @attributes('icon')></svg>
     <span @attributes('title')>{{ $title }}</span>                {{-- picks up <x-slot:title class="..."> --}}
-    @has('badge')<i @attributes('badge')></i>@endhas             {{-- only when that element has classes --}}
+    @styled('badge')<i @attributes('badge')></i>@endstyled             {{-- only when that element has classes --}}
     {{ $slot }}
 </button>
 ```
 
 ```bash
 php artisan make:malevich button
+php artisan malevich:add button         # copy the ready-made kit component; --force to overwrite
 php artisan vendor:publish --tag malevich:config
 php artisan vendor:publish --tag malevich:components
 php artisan view:clear     # after config changes or package upgrade
@@ -73,7 +75,7 @@ php artisan view:clear     # after config changes or package upgrade
 | Classes depend on one prop | `@variant` / `@color` / `@size` / `@option('name', ...)` |
 | Classes always present | `@base` |
 | Several elements change together per value of one prop | `@cases('variant', [value => [target => classes]])` |
-| An element exists only in some variants | `@has('target') ... @endhas`, all its classes in the variants (no `@base`) |
+| An element exists only in some variants | `@styled('target') ... @endstyled`, all its classes in the variants (no `@base`) |
 | Classes depend on 2+ props or a flag | `@compound` |
 | Default value of an option | its `@props` default |
 | Catch value typos in dev | `MALEVICH_STRICT=true` or `Malevich::strict(! app()->isProduction())` |

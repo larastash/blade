@@ -22,7 +22,7 @@ module.exports = {
                 info: colors.blue,
                 success: colors.green,
                 danger: colors.red,
-                warning: colors.amber,
+                warning: colors.yellow,
                 gray: colors.neutral,
             },
             borderRadius: {

@@ -9,6 +9,15 @@
 5. Start from the closest existing component in the project, or scaffold a new one with `php artisan make:malevich name`.
 6. Verify with the checklist below.
 
+## `malevich:add`
+
+```bash
+php artisan malevich:add button
+php artisan malevich:add button --force
+```
+
+Copies a ready-made component from the package's kit into `components.path`, creating the destination directory as needed. Existing components are preserved unless `--force` is explicit. The reported tag respects `components.prefix`. Unknown names list the available components. Configure the component's required Tailwind color scales and radius tokens in the application theme. Use `make:malevich` for an empty scaffold instead.
+
 ## `make:malevich`
 
 ```bash
@@ -27,7 +36,7 @@ Scaffolds a `@props` entry (default `null`) and an empty map for every option in
 
 A prefix adds a tag, it doesn't remove the plain one: while `components.path` is `resources/views/components`, Laravel still serves the file as `<x-button>` too. For prefix-only tags use a folder of their own, e.g. `'path' => resource_path('views/ui'), 'prefix' => 'ui'`.
 
-Config defaults: `options` = `['variant','size','color']`, `directives` = `attributes`, `base`, `option`, `compound`, `cases`, `has` (each renamable), `components.path` = `resource_path('views/components')`, `components.prefix` = `null`, `default_target` = `'default'`, `data_attributes` = `false`, `merge_classes` = `'auto'`. Publish with `php artisan vendor:publish --tag malevich:config`.
+Config defaults: `options` = `['variant','size','color']`, `directives` = `attributes`, `base`, `option`, `compound`, `cases`, `styled` (each renamable), `components.path` = `resource_path('views/components')`, `components.prefix` = `null`, `default_target` = `'default'`, `data_attributes` = `false`, `merge_classes` = `'auto'`. Publish with `php artisan vendor:publish --tag malevich:config`.
 
 ## Converting an existing component
 

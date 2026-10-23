@@ -47,8 +47,9 @@ Use it when one prop changes the classes of several elements and you want to rea
 - First argument: the option name (`variant`, `size`, any `@option` name).
 - Inner keys are targets, `default` is the main element. A plain string or list as a value styles the main element.
 - It fills the same slots as one `@variant('target', [...])` per element; several `@cases` calls add up. A later `@variant([...])` for the same element and option **replaces** the theme's classes.
-- Conditional classes (`['a', 'b' => $cond]`) go under a target key, never directly as a value.
-- An optional part: no `@base` for it, all classes in the variants, render it inside `@has('target') ... @endhas`.
+- Conditional class maps (`['a', 'b' => $cond]`) can style the root directly when named class keys have boolean values. For named targets, nest them under the target key.
+- `@cases('size', [...], when: ['inset' => true, 'variant' => ['ghost', 'link']])` adds compound classes only when all shared conditions match. It preserves ordinary option maps and supports independent target choices. An empty `when` behaves like ordinary cases.
+- An optional part: no `@base` for it, all classes in the variants, render it inside `@styled('target') ... @endstyled`.
 
 ## `@compound`
 
@@ -76,7 +77,7 @@ Per-target values: pass an array keyed by target, main element is `default`:
 
 ## Directive names and collisions
 
-- Every directive name is configurable in `config/malevich.php` under `directives` (`attributes`, `base`, `option`, `compound`, `cases`, `has`). In a project that renamed them, use the project's names.
+- Every directive name is configurable in `config/malevich.php` under `directives` (`attributes`, `base`, `option`, `compound`, `cases`, `styled`). In a project that renamed them, use the project's names.
 - Boot throws if a configured name is a Blade built-in, is already registered by the app or another package, is a Malevich name, is a method of `$attributes`, or is invalid.
 - A directive written without parentheses is left as text, so Tailwind's `@variant dark` inside a template stay intact.
 
