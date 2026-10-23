@@ -17,17 +17,6 @@ module.exports = {
                 serif: ['"Noto Serif"', ...defaultTheme.fontFamily.serif],
                 mono: ['"Noto Sans Mono"', ...defaultTheme.fontFamily.mono],
             },
-            colors: {
-                primary: colors.orange,
-                info: colors.blue,
-                success: colors.green,
-                danger: colors.red,
-                warning: colors.yellow,
-                gray: colors.neutral,
-            },
-            borderRadius: {
-                brand: defaultTheme.borderRadius['xl'],
-            },
         },
     },
 }

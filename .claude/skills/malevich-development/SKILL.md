@@ -51,11 +51,13 @@ Never write `$color` in the markup: `@attributes` reads the option from `@props`
 @compound(['variant' => 'primary', 'size' => 'lg'], 'shadow-lg')   {{-- ALL conditions; list = any of --}}
 @compound(['loading' => true], 'cursor-wait')             {{-- flag --}}
 @compound(['size' => 'sm'], targets: ['default' => 'px-2', 'icon' => 'size-3'])   {{-- one combination, several elements --}}
+@compound(['loading' => true], targets: ['leading,trailing' => 'hidden'])   {{-- one key, several elements --}}
+{{-- @attributes(override: ['aria-busy' => $loading ? 'true' : null]): the component wins; null keeps the user's value --}}
 
 <button @attributes(merge: ['type' => 'button'])>                 {{-- default attributes, user wins --}}
     <svg @attributes('icon')></svg>
     <span @attributes('title')>{{ $title }}</span>                {{-- picks up <x-slot:title class="..."> --}}
-    @styled('badge')<i @attributes('badge')></i>@endstyled             {{-- only when that element has classes --}}
+    @styled('badge')<i @attributes('badge')></i>@endstyled       {{-- only when that element has classes --}}
     {{ $slot }}
 </button>
 ```

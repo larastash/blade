@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
+@config "../../tailwind.config.js";
+
 @custom-variant dark (&:where(.dark, .dark *));
 
-@plugin "@tailwindcss/typography";
-
-@config "../../tailwind.config.js";
+@import '@css/malevich.css';
 
 @import "tw-shimmer";
 @import '@vendor/livewire/flux/dist/flux.css';
@@ -15,3 +15,5 @@
 @import "tw-animate-css";
 @import "@css/vendor/tippy.css";
 @import "@css/vendor/flux.css";
+
+@plugin "@tailwindcss/typography";
