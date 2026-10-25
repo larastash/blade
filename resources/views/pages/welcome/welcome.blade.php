@@ -16,7 +16,7 @@
     </div>
 
     <div class="top-4 right-4 absolute flex items-center gap-4">
-        <button x-data="theme" @click="toggleTheme" data-tippy-content="Theme" class="hover:bg-color-200 p-2 rounded-brand">
+        <button x-data="theme" @click="toggleTheme" data-tooltip="Theme" class="hover:bg-color-200 p-2 rounded-brand">
             <x-icon x-show="currentTheme === 'light'" x-cloak name="lucide-sun" class="size-5" />
             <x-icon x-show="currentTheme === 'dark'" x-cloak name="lucide-moon" class="size-5" />
             <x-icon x-show="currentTheme === 'system'" x-cloak name="lucide-sun-moon" class="size-5" />

@@ -4,7 +4,7 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@import '@css/malevich.css';
+@import '@css/vendor/malevich.css';
 
 @import "tw-shimmer";
 @import '@vendor/livewire/flux/dist/flux.css';
