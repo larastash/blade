@@ -26,4 +26,11 @@
     button:not(:disabled), [role="button"]:not(:disabled) {
         cursor: pointer;
     }
+
+    /* Круговое раскрытие новой темы рисуется из JS (theme.js), стандартный кроссфейд отключаем. */
+    ::view-transition-old(root),
+    ::view-transition-new(root) {
+        animation: none;
+        mix-blend-mode: normal;
+    }
 }

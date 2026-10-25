@@ -40,9 +40,55 @@ export default () => ({
         }
     },
 
-    toggleTheme() {
+    toggleTheme(event) {
         const idx = this.allowedThemes.indexOf(this.currentTheme);
-        this.currentTheme = this.allowedThemes[(idx + 1) % this.allowedThemes.length];
+        const next = this.allowedThemes[(idx + 1) % this.allowedThemes.length];
+
+        const canAnimate = typeof document.startViewTransition === 'function'
+            && ! window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (! canAnimate) {
+            this.currentTheme = next;
+            return;
+        }
+
+        const origin = this.transitionOrigin(event);
+        const radius = Math.hypot(
+            Math.max(origin.x, window.innerWidth - origin.x),
+            Math.max(origin.y, window.innerHeight - origin.y),
+        );
+
+        const transition = document.startViewTransition(() => {
+            this.currentTheme = next;
+            this.applyTheme();
+        });
+
+        transition.ready.then(() => {
+            document.documentElement.animate(
+                {
+                    clipPath: [
+                        `circle(0px at ${origin.x}px ${origin.y}px)`,
+                        `circle(${radius}px at ${origin.x}px ${origin.y}px)`,
+                    ],
+                },
+                {
+                    duration: 500,
+                    easing: 'ease-in-out',
+                    pseudoElement: '::view-transition-new(root)',
+                },
+            );
+        }).catch(() => {});
+    },
+
+    transitionOrigin(event) {
+        // Для клика берём точку курсора, для клавиатуры (clientX = 0) — центр кнопки.
+        if (event && (event.clientX || event.clientY)) {
+            return { x: event.clientX, y: event.clientY };
+        }
+
+        const rect = (event?.currentTarget ?? this.$el).getBoundingClientRect();
+
+        return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
     },
 
     isDark() {
